@@ -1,4 +1,4 @@
-package com.cld.knowledge_graph_service;
+package com.cld.graph;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

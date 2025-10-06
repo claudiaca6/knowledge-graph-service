@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package com.cld.graph.proto;
+
+option java_multiple_files = true;
+option java_package = "com.cld.graph.grpc";
+option java_outer_classname = "KnowledgeGraphProto";
+
+message Graph {
+    int64 id = 1;
+    string name = 2;
+    string type = 3;
+    map<string, string> properties = 4;
+}
+
+message Relationship {
+    int64 id = 1;
+    int64 sourceGraphId = 2;
+    int64 targetGraphId = 3;
+    string type = 4;
+    map<string, string> properties = 5;
+}
+
+message CreateGraphRequest {
+    string name = 1;
+    string type = 2;
+    map<string, string> properties = 3;
+}
+
+message CreateGraphResponse {
+    Graph graph = 1;
+}
+
+message CreateRelationshipRequest {
+    int64 sourceGraphId = 1;
+    int64 targetGraphId = 2;
+    string type = 3;
+    map<string, string> properties = 4;
+}
+
+message CreateRelationshipResponse {
+    Relationship relationship = 1;
+}
+
+message QueryGraphsRequest {
+    string type = 1;
+    string name = 2;
+}
+
+message QueryGraphsResponse {
+    repeated Graph graphs = 1;
+}
+
+message QueryRelationshipsRequest {
+    int64 sourceGraphId = 1;
+    int64 targetGraphId = 2;
+    string type = 3;
+}
+
+message QueryRelationshipsResponse {
+    repeated Relationship relationships = 1;
+}
+
+service KnowledgeGraphService {
+    rpc CreateGraph(CreateGraphRequest) returns (CreateGraphResponse);
+    rpc CreateRelationship(CreateRelationshipRequest) returns (CreateRelationshipResponse);
+    rpc GetGraphs(QueryGraphsRequest) returns (QueryGraphsResponse);
+    rpc GetRelationships(QueryRelationshipsRequest) returns (QueryRelationshipsResponse);
+}

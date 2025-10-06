@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/001_ddl_create_graph_table.yaml
+  - include:
+      file: db/002_ddl_create_relationship_table.yaml

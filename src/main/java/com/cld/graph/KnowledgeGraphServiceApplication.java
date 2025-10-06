@@ -1,4 +1,4 @@
-package com.cld.knowledge_graph_service;
+package com.cld.graph;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
